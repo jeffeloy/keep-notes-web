@@ -1,68 +1,69 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+   <img src="./src/statics/logo.png" width="150"/>
+</p>
 
-## Available Scripts
+<h1 align="center">Keep Notes</h1>
 
-In the project directory, you can run:
+| A aplicação é um clone do Google Keep.
 
-### `yarn start`
+<p align="center">
+  <img align="center" src="./docs/Screenshot.png" alt="Web-Signin" border="0">
+</p>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## :bulb: Objetivo
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+| Desenvolver uma aplicação web inspirada no Google Keep, que permita ao usuário adicionar,listar e deletar suas tarefas.
 
-### `yarn test`
+## :black_nib: Justificativa
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Essa aplicação faz parte do meu portifólio, e foi desenvolvida com o intuito de adquirir ainda mais conhecimentos na stack JavaScript (NodeJS, ReactJS).
 
-### `yarn build`
+## 👨🏼‍💻 Autores
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Foto                                                                                                        | Nome           | GitHub                                  | LinkedIn                                                 | E-mail                               |
+| ----------------------------------------------------------------------------------------------------------- | -------------- | --------------------------------------- | -------------------------------------------------------- | ------------------------------------ |
+| ![](https://avatars2.githubusercontent.com/u/56545903?s=400&u=7445f50f4a7c02a76fef37d74a1f84b2bf2c7109&v=4) | Jefferson Eloy | [jeffeloy](https://github.com/jeffeloy) | [Jefferson](https://www.linkedin.com/in/jefferson-eloy/) | [Contato](contatojeloydev@gmail.com) |
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## :computer: Tecnologias
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Java Script
+- React
+- Material UI
+- Styled Components
 
-### `yarn eject`
+## :construction_worker: Instalação
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Você precisa instalar o [Node.js](https://nodejs.org/en/download/) e o [Yarn](https://yarnpkg.com/) primeiro e, em seguida, para clonar o projeto via HTTPS, execute este comando:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+git clone https://github.com/jeffeloy/keep-notes-front.git
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Instalar dependências
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+yarn install
+```
 
-## Learn More
+### Configure a API
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+A interface precisa interagir com o servidor para obter as tarefas cadastradas.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Certifique-se de ir ao repositório [KeepNotesAPI](https://github.com/jeffeloy/keep-notes-api.git) e siga as instruções para fazê-lo funcionar em sua máquina.
 
-### Code Splitting
+## :running: Inicializando
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Execute o seguinte comando para iniciar o aplicativo em um ambiente de desenvolvimento:
 
-### Analyzing the Bundle Size
+```
+yarn start
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## :tada: Contribuir
 
-### Making a Progressive Web App
+Confira a [contributing](https://github.com/jeffeloy/keep-notes-web/blob/master/CONTRIBUTING.md) página para ver os melhores locais para arquivar problemas, iniciar discussões e começar a contribuir.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## :green_book: License
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Lançado em 2020.
+Este projeto está sob a [License](https://github.com/jeffeloy/keep-notes-web/blob/master/LICENSE).
