@@ -1,22 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import InputBase from "@material-ui/core/InputBase";
 import Grid from "@material-ui/core/Grid";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import Checkbox from "@material-ui/core/Checkbox";
 
 import Layout from "./components/Layout";
+import ListTasks from "./components/ListTasks";
+
+import api from "./services/api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
     display: "flex",
-    background: "#f0efeb",
+    background:
+      "linear-gradient(180deg, rgba(212,217,230,1) 0%, rgba(226,227,235,1) 50%, rgba(250,248,251,1) 100%);",
   },
   toolbar: {
     display: "flex",
@@ -34,20 +33,46 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
-  const [tasks, setTasks] = React.useState([]);
+  const [newTask, setNewTask] = useState("");
+  const [tasks, setTasks] = useState([]);
 
-  const taskTest = [
-    {
-      description: "Estudar React",
-      finalizada: false,
-      description: "Estudar Node.js",
-      finalizada: false,
-      description: "Estudar AdonisJs",
-      finalizada: false,
-    },
-  ];
+  useEffect(() => {
+    async function loadTasks() {
+      const headers = { Accept: "application/json" };
 
-  setTasks(taskTest);
+      const response = await api.get("/tasks", { headers: headers });
+
+      setTasks(response.data);
+    }
+    loadTasks();
+  }, []);
+
+  async function createNewTask(event) {
+    const ENTER_KEY_CODE = 13;
+
+    if (event.keycode === ENTER_KEY_CODE) {
+      const headers = { Accept: "application/json" };
+      const data = { task: { description: newTask, finished: false } };
+
+      if (newTask === "") {
+        return;
+      }
+      const response = await api.post("/tasks", data, { headers: headers });
+
+      setNewTask("");
+
+      setTasks([...tasks, response.data]);
+    }
+  }
+
+  async function handleTaskCompletion(taskSelected) {
+    const headers = { Accept: "application/json" };
+    const data = { taskSelected: { finished: !taskSelected.finished } };
+
+    await api.put(`/tasks/${taskSelected.id}`, data, { headers: headers });
+
+    setTasks([...tasks.filter((task) => task.id !== taskSelected.id)]);
+  }
 
   return (
     <div className={classes.root}>
@@ -62,6 +87,9 @@ function App() {
                   fullWidth
                   placeholder="Criar uma tarefa..."
                   style={{ fontWeight: 500 }}
+                  value={newTask}
+                  onChange={(e) => setNewTask(e.target.value)}
+                  onKeyUp={createNewTask}
                 />
               </CardContent>
             </Card>
@@ -70,26 +98,7 @@ function App() {
 
         <Grid container direction="row" style={{ marginTop: 20 }}>
           <Grid item xs={12} sm={3} xl={2}>
-            <Card elevation={2}>
-              <List style={{ padding: 0 }}>
-                {tasks.map((task) => {
-                  return (
-                    <ListItem dense button>
-                      <ListItemIcon>
-                        <Checkbox
-                          style={{ color: "#616161" }}
-                          size="small"
-                          edge="start"
-                          checked={true}
-                          disableRipple
-                        />
-                      </ListItemIcon>
-                      <ListItemText primary={task} />
-                    </ListItem>
-                  );
-                })}
-              </List>
-            </Card>
+            <ListTasks tasks={tasks} endTask={handleTaskCompletion} />
           </Grid>
         </Grid>
       </main>

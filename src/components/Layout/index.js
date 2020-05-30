@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -11,7 +11,6 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import Avatar from "@material-ui/core/Avatar";
 
@@ -21,8 +20,8 @@ const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    color: "#33415c",
-    background: "#f0efeb",
+    color: "#3B4253",
+    background: "#D4D9E6",
     zIndex: theme.zIndex.drawer + 1,
   },
   drawer: {
@@ -32,7 +31,8 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerOpen: {
     width: drawerWidth,
-    background: "#f0efeb",
+    background:
+      "linear-gradient(180deg, rgba(212,217,230,1) 0%, rgba(226,227,235,1) 50%, rgba(250,248,251,1) 100%)",
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -40,7 +40,8 @@ const useStyles = makeStyles((theme) => ({
     borderRight: "none",
   },
   drawerClose: {
-    background: "#f0efeb",
+    background:
+      "linear-gradient(180deg, rgba(203,207,219,1) 0%, rgba(212,217,230,1) 50%, rgba(212,217,230,1) 100%)",
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -65,16 +66,16 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
   menuItem: {
-    borderTopRightRadius: 20,
-    borderBottomRightRadius: 20,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
 
-    background: "#feefc3",
+    background: "#FAF8FB",
   },
 }));
 
 function Layout() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
 
   const toggleDrawerOpen = () => {
     setOpen(!open);
@@ -95,7 +96,7 @@ function Layout() {
           <Avatar
             alt="Keep Notes"
             src={logo}
-            style={{ marginLeft: 10, marginRight: 15 }}
+            style={{ marginLeft: 15, marginRight: 10 }}
           />
           <Typography variant="h6" style={{ fontWeight: 700 }} noWrap>
             Keep Notes
@@ -122,7 +123,9 @@ function Layout() {
             <ListItemIcon>
               <AssignmentIcon />
             </ListItemIcon>
-            <ListItemText primary="Notas" style={{ fontWeight: 500 }} />
+            <Typography variant="h7" style={{ fontWeight: 500 }} noWrap>
+              Notas
+            </Typography>
           </ListItem>
         </List>
       </Drawer>
