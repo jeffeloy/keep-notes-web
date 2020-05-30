@@ -1,5 +1,5 @@
 <p align="center">
-   <img src="./src/statics/logo.png" width="150"/>
+   <img src="./docs/logo.png" width="150"/>
 </p>
 
 <h1 align="center">Keep Notes</h1>
@@ -20,9 +20,9 @@
 
 ## 👨🏼‍💻 Autores
 
-| Foto                                                                                                        | Nome           | GitHub                                  | LinkedIn                                                 | E-mail                               |
-| ----------------------------------------------------------------------------------------------------------- | -------------- | --------------------------------------- | -------------------------------------------------------- | ------------------------------------ |
-| ![](https://avatars2.githubusercontent.com/u/56545903?s=400&u=7445f50f4a7c02a76fef37d74a1f84b2bf2c7109&v=4) | Jefferson Eloy | [jeffeloy](https://github.com/jeffeloy) | [Jefferson](https://www.linkedin.com/in/jefferson-eloy/) | [Contato](contatojeloydev@gmail.com) |
+| Foto                                                                                                                             | Nome                      | GitHub                                   | Likedin                                                 | E-mail                    |
+| -------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ---------------------------------------- | ------------------------------------------------------- | ------------------------- |
+| <img src="https://avatars2.githubusercontent.com/u/56545903?s=400&u=7445f50f4a7c02a76fef37d74a1f84b2bf2c7109&v=4" width="100px"> | Jefferson de Santana Eloy | [Jefferson](https://github.com/jeffeloy) | [Linkedin](https://www.linkedin.com/in/jefferson-eloy/) | contatojeloydev@gmail.com |
 
 ## :computer: Tecnologias
 
