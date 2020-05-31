@@ -10,7 +10,7 @@
   <img align="center" src="./docs/Screenshot.png" alt="Web-Signin" border="0">
 </p>
 
-## :link: [Live Demo](https://jeffeloy-keepnotes.netlify.app/)
+## :link: Para testar [clique aqui.](https://jeffeloy-keepnotes.netlify.app/)
 
 ## :bulb: Objetivo
 
@@ -68,4 +68,4 @@ Confira a [contributing](https://github.com/jeffeloy/keep-notes-web/blob/master/
 ## :green_book: License
 
 Lançado em 2020.
-Este projeto está sob a [License](https://github.com/jeffeloy/keep-notes-web/blob/master/LICENSE).
+Este projeto está sob a [MIT license](https://github.com/jeffeloy/keep-notes-web/blob/master/LICENSE).
