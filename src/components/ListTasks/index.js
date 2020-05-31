@@ -5,6 +5,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 function ListTasks(props) {
   return (
@@ -12,24 +13,26 @@ function ListTasks(props) {
       <List style={{ padding: 0 }}>
         {props.tasks.map((task) => {
           return (
-            <ListItem
-              dense
-              button
-              key={task.id}
-              onClick={() => {
-                props.endTask(task);
-              }}
-            >
+            <ListItem dense button key={task.id}>
               <ListItemIcon>
                 <Checkbox
                   style={{ color: "#616161" }}
                   size="small"
                   edge="start"
-                  checked={() => onclick(task.finished)}
+                  onClick={() => {
+                    props.endTask(task);
+                  }}
+                  checked={task.finished}
                   disableRipple
                 />
               </ListItemIcon>
               <ListItemText primary={task.description} />
+              <DeleteIcon
+                style={{ color: "#E02041", fontSize: "large" }}
+                onClick={() => {
+                  props.deleteTask(task.id);
+                }}
+              />
             </ListItem>
           );
         })}

@@ -123,7 +123,7 @@ function Layout() {
             <ListItemIcon>
               <AssignmentIcon />
             </ListItemIcon>
-            <Typography variant="h7" style={{ fontWeight: 500 }} noWrap>
+            <Typography variant="subtitle1" style={{ fontWeight: 500 }} noWrap>
               Notas
             </Typography>
           </ListItem>
