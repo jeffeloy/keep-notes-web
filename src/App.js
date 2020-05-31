@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import InputBase from "@material-ui/core/InputBase";
 import Grid from "@material-ui/core/Grid";
 
 import Layout from "./components/Layout";
 import ListTasks from "./components/ListTasks";
+import LoadTasks from "./components/LoadTasks";
+import CreateTasks from "./components/CreateTasks";
 
 import api from "./services/api";
 
@@ -33,45 +32,29 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
-  const [newTask, setNewTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
-    async function loadTasks() {
-      const headers = { Accept: "application/json" };
-
-      const response = await api.get("/tasks", { headers: headers });
-
-      setTasks(response.data);
-    }
-    loadTasks();
-  }, []);
-
-  async function createNewTask(event) {
-    const ENTER_KEY_CODE = 13;
-
-    if (event.keycode === ENTER_KEY_CODE) {
-      const headers = { Accept: "application/json" };
-      const data = { task: { description: newTask, finished: false } };
-
-      if (newTask === "") {
-        return;
-      }
-      const response = await api.post("/tasks", data, { headers: headers });
-
-      setNewTask("");
-
-      setTasks([...tasks, response.data]);
-    }
+  function updateListTask() {
+    LoadTasks().then((listTasks) => setTasks(listTasks));
   }
 
-  async function handleTaskCompletion(taskSelected) {
+  useEffect(() => {
+    updateListTask();
+  }, []);
+
+  function handleTaskCompletion(task) {
     const headers = { Accept: "application/json" };
-    const data = { taskSelected: { finished: !taskSelected.finished } };
+    const data = { finished: !task.finished };
 
-    await api.put(`/tasks/${taskSelected.id}`, data, { headers: headers });
-
-    setTasks([...tasks.filter((task) => task.id !== taskSelected.id)]);
+    api
+      .put(`/tasks/${task.id}`, data, { headers: headers })
+      .then(() => updateListTask());
+  }
+  function handleTaskDelete(id) {
+    const headers = { Accept: "application/json" };
+    api
+      .delete(`/tasks/${id}`, { headers: headers })
+      .then(() => updateListTask());
   }
 
   return (
@@ -81,24 +64,17 @@ function App() {
         <div className={classes.toolbar} />
         <Grid container direction="row" justify="center">
           <Grid item xs={12} sm={6}>
-            <Card elevation={2}>
-              <CardContent style={{ padding: "10px 20px" }}>
-                <InputBase
-                  fullWidth
-                  placeholder="Criar uma tarefa..."
-                  style={{ fontWeight: 500 }}
-                  value={newTask}
-                  onChange={(e) => setNewTask(e.target.value)}
-                  onKeyUp={createNewTask}
-                />
-              </CardContent>
-            </Card>
+            <CreateTasks updateListTask={updateListTask} />
           </Grid>
         </Grid>
 
         <Grid container direction="row" style={{ marginTop: 20 }}>
           <Grid item xs={12} sm={3} xl={2}>
-            <ListTasks tasks={tasks} endTask={handleTaskCompletion} />
+            <ListTasks
+              tasks={tasks}
+              endTask={handleTaskCompletion}
+              deleteTask={handleTaskDelete}
+            />
           </Grid>
         </Grid>
       </main>
